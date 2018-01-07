@@ -1,0 +1,10 @@
+{
+    "dev": {
+        "aws_region": null,
+        "django_settings": "main.settings",
+        "profile_name": "pointer",
+        "project_name": "hoodpub-backend",
+        "runtime": "python3.6",
+        "s3_bucket": "zappa-7h66qx8tg"
+    }
+}
