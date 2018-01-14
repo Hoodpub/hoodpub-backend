@@ -25,7 +25,18 @@ SECRET_KEY = 'n-nl*6u#d#_(f5#$#11_^rv5cynffl047jimsfh0*m$dk5c0f%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = (
+    'hmapps.gv34rimdzh.ap-northeast-2.elasticbeanstalk.com',
+    'localhost:4200',
+    'hmapps.healworld.co.kr',
+    'earth.healworld.co.kr',
+    'localhost',
+    '127.0.0.1:8100'
+)
+
+ALLOWED_HOSTS = CORS_ORIGIN_WHITELIST
+
 
 
 # Application definition
@@ -37,9 +48,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'corsheaders',
+    'django_extensions',
+    'rest_framework',
+
+    'book',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
