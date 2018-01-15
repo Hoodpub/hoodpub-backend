@@ -107,3 +107,4 @@ db.sqlite3
 !.elasticbeanstalk/*.global.yml
 /main/settings_loca.py
 /main/settings_local.py
+*.zip

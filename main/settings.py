@@ -27,17 +27,14 @@ DEBUG = True
 
 # CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
-    'hmapps.gv34rimdzh.ap-northeast-2.elasticbeanstalk.com',
+    '0ihng7r161.execute-api.ap-northeast-2.amazonaws.com',
     'localhost:4200',
-    'hmapps.healworld.co.kr',
-    'earth.healworld.co.kr',
+    '.hoodpub.com',
     'localhost',
     '127.0.0.1:8100'
 )
 
 ALLOWED_HOSTS = CORS_ORIGIN_WHITELIST
-
-
 
 # Application definition
 

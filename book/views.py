@@ -14,8 +14,9 @@ class BookViewSet(ModelViewSet):
     serializer_class = BookSerializer
 
     def list(self, request, *args, **kwargs):
-        keyword = kwargs.get('keyword', '자연')
+        keyword = request.GET.get('keyword', '자연')
 
-        url = 'https://apis.daum.net/search/book?apikey=9f68e425f40e190b407745eb855619262ce0b2cc&q=%s&output=json' % keyword
+        url = 'https://apis.daum.net/search/book?apikey=9f68e425f40e190b407745eb855619262ce0b2cc&q=%s&output=json&result=20' % keyword
+        print(url)
         res = requests.get(url)
         return Response(dict(res=res.json()))
