@@ -25,16 +25,25 @@ SECRET_KEY = 'n-nl*6u#d#_(f5#$#11_^rv5cynffl047jimsfh0*m$dk5c0f%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = (
-    '0ihng7r161.execute-api.ap-northeast-2.amazonaws.com',
+ALLOWED_HOSTS = (
     'localhost:4200',
     '.hoodpub.com',
+    'www.hoodpub.com',
     'localhost',
-    '127.0.0.1:8100'
+    'ygawdghu8g.execute-api.ap-northeast-2.amazonaws.com',
 )
 
-ALLOWED_HOSTS = CORS_ORIGIN_WHITELIST
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'PUT',
+    'DELETE',
+    'OPTIONS',
+    'PATCH',
+)
 
 # Application definition
 
@@ -54,9 +63,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

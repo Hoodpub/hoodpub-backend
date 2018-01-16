@@ -1,14 +1,4 @@
 {
-  "dev": {
-    "aws_region": "ap-northeast-2",
-    "django_settings": "main.settings",
-    "profile_name": "pointer",
-    "project_name": "hoodpub-backend",
-    "runtime": "python3.6",
-    "certificate_arn": "arn:aws:acm:us-east-1:262093075615:certificate/279ecd1f-f189-466e-b09e-b14c7c85f28f",
-    "domain": "backend-dev.hoodpub.com",
-    "s3_bucket": "zappa-hoodpub-backend-dev"
-  },
   "live": {
     "aws_region": "ap-northeast-2",
     "django_settings": "main.settings",
@@ -17,6 +7,8 @@
     "runtime": "python3.6",
     "certificate_arn": "arn:aws:acm:us-east-1:262093075615:certificate/279ecd1f-f189-466e-b09e-b14c7c85f28f",
     "domain": "backend.hoodpub.com",
+    "cors": true,
+    "binary_support": false,
     "s3_bucket": "zappa-hoodpub-backend"
   }
 }

@@ -1,5 +1,3 @@
-import json
-
 import requests
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
@@ -14,9 +12,19 @@ class BookViewSet(ModelViewSet):
     serializer_class = BookSerializer
 
     def list(self, request, *args, **kwargs):
+        print('version')
         keyword = request.GET.get('keyword', '자연')
 
-        url = 'https://apis.daum.net/search/book?apikey=9f68e425f40e190b407745eb855619262ce0b2cc&q=%s&output=json&result=20' % keyword
-        print(url)
-        res = requests.get(url)
+        payload = {
+            "output": "json",
+            "result": 20,
+            "apikey": "9f68e425f40e190b407745eb855619262ce0b2cc",
+            "searchType": "title"
+        }
+
+        if keyword:
+            payload['q'] = keyword
+
+        url = 'https://apis.daum.net/search/book'
+        res = requests.get(url, params=payload)
         return Response(dict(res=res.json()))
