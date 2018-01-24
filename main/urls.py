@@ -16,14 +16,15 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
-from book.views import BookViewSet
+from book.views import BookViewSet, HoodpubViewSet
 
 router = routers.SimpleRouter()
 router.register(r'book', BookViewSet, base_name='book')
+router.register(r'hoodpub', HoodpubViewSet, base_name='hoodpub')
 urlpatterns = router.urls
 
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^django_admin/', admin.site.urls),
     url(r'^api/', include(router.urls))
 ]

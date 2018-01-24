@@ -23,27 +23,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'n-nl*6u#d#_(f5#$#11_^rv5cynffl047jimsfh0*m$dk5c0f%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = (
-    'localhost:4200',
-    '.hoodpub.com',
-    'www.hoodpub.com',
+    'backend.hoodpub.com',
+    'backend-live.hoodpub.com',
     'localhost',
     'ygawdghu8g.execute-api.ap-northeast-2.amazonaws.com',
 )
 
-CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
-
-CORS_ALLOW_METHODS = (
-    'GET',
-    'POST',
-    'PUT',
-    'DELETE',
-    'OPTIONS',
-    'PATCH',
-)
 
 # Application definition
 
@@ -101,6 +90,17 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('RDB_NAME'),
+        'USER': os.getenv('RDB_USERNAME'),
+        'PASSWORD': os.getenv('RDB_PASSWORD'),
+        'HOST': os.getenv('RDB_HOSTNAME'),
+        'PORT': '3306',
     }
 }
 
