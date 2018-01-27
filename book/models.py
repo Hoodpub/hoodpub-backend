@@ -1,14 +1,5 @@
-from django.db import models
-from model_utils.models import TimeStampedModel
-
-from pynamodb.models import Model
 from pynamodb.attributes import UnicodeAttribute
-
-
-class Book(TimeStampedModel):
-    code = models.CharField(max_length=32, unique=True)
-    name = models.CharField(max_length=32, unique=True)
-    gubun = models.CharField(max_length=32)
+from pynamodb.models import Model
 
 
 class UserBookModel(Model):

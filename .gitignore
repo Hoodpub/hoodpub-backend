@@ -108,3 +108,7 @@ db.sqlite3
 /main/settings_loca.py
 /main/settings_local.py
 *.zip
+/hoodpub-backend-dev-template-*.json
+/book/migrations/0002_delete_book.py
+/hoodpub/__init__.py
+/static/*
