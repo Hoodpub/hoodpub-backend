@@ -49,8 +49,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'storages',
 
-    'book',
     'hoodpub',
+    'book',
 ]
 
 MIDDLEWARE = [

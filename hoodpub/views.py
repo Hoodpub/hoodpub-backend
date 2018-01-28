@@ -9,7 +9,7 @@ class HoodpubViewSet(ModelViewSet):
     queryset = UserBook.objects.all()
 
     def list(self, request, *args, **kwargs):
-        keyword = request.GET.get('keyword', '자연')
+        keyword = request.GET.get('keyword', '자전거')
 
         payload = {
             "output": "json",
@@ -45,9 +45,9 @@ class HoodpubViewSet(ModelViewSet):
         return Response(dict(res='hi'))
 
     def delete(self, requests):
-        exist = UserBookModel.exists()
-        if exist:
-            UserBookModel.delete_table()
-            UserBookModel.create_table(read_capacity_units=1, write_capacity_units=1)
+        # exist = UserBookModel.exists()
+        # if exist:
+        #     UserBookModel.delete_table()
+        #     UserBookModel.create_table(read_capacity_units=1, write_capacity_units=1)
 
-        return Response(dict(res=exist))
+        return Response(dict(res='exist'))
