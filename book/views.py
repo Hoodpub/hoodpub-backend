@@ -1,18 +1,9 @@
-import os
 import requests
-from django.conf import settings
 from rest_framework.response import Response
-from rest_framework.viewsets import ModelViewSet, ViewSet
-from book.models import UserBookModel
-
-from hoodpub.models import Book
-from .serializers import BookSerializer
+from rest_framework.viewsets import ViewSet
 
 
-class BookViewSet(ModelViewSet):
-
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
+class BookViewSet(ViewSet):
 
     def list(self, request, *args, **kwargs):
         keyword = request.GET.get('keyword', '자연')

@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from hoodpub.models import Book
 
 
 class BookSerializer(serializers.ModelSerializer):

@@ -1,9 +1,24 @@
 from rest_framework import serializers
-from hoodpub.models import Hoodpub
+from .models import Book, UserBook, User
 
 
-class HoodpubSerializer(serializers.ModelSerializer):
+class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Hoodpub
-        fields = '__all__'
+        model = Book
+        exclude = ['created', 'modified']
+
+
+class UserBookSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UserBook
+        exclude = ['created', 'modified']
+
+
+class UserSerializer(serializers.ModelSerializer):
+    userbooks = UserBookSerializer(many=True)
+
+    class Meta:
+        model = User
+        exclude = ['created', 'modified']
