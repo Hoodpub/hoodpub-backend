@@ -1,9 +1,13 @@
+from urllib.request import urlopen
+
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
 from django.utils.safestring import mark_safe
 from model_utils.models import TimeStampedModel
 from versatileimagefield.fields import VersatileImageField
+
 import wikipedia
+
 wikipedia.set_lang("ko")
 
 
@@ -11,13 +15,29 @@ class HoodpubUserManager(UserManager):
     def new_from_wiki(self, keyword):
         page = wikipedia.page(keyword)
         username = "%s-%s-%s" % (page.title, page.pageid, "wiki")
-        import ipdb; ipdb.set_trace()
-        image = page.images[0] if len(page.images) > 0 else None
-        self.create_user(username,
-                         password=page.title,
-                         **dict(last_name=page.title,
-                                first_name=page.original_title,
-                                image_profile=image))
+
+        images = [image for image in page.images if 'svg' not in image]
+        image = images[0] if len(images) > 0 else None
+
+        user = self.create_user(
+            username,
+            password=page.title,
+            **dict(last_name=page.title,
+                   first_name=page.original_title))
+
+        if not image:
+            print('no image')
+            return
+
+        content = urlopen(image).read()
+        filename = image.split('/')[-1]
+
+        with open("/tmp/%s" % filename, 'wb') as fp:
+            fp.write(content)
+
+        with open("/tmp/%s" % filename, 'rb') as fp:
+            user.image_profile.save(filename, fp)
+
         return page.title
 
 
@@ -33,9 +53,6 @@ class User(AbstractUser, TimeStampedModel):
 
     class Meta:
         unique_together = (("username", "url_wiki"),)
-
-    def save(self, *args, **kwargs):
-        return super(User, self).save(*args, *kwargs)
 
 
 class Book(TimeStampedModel):

@@ -1,3 +1,4 @@
+from django.utils.html import mark_safe
 from django.contrib import admin
 from .models import User, Book, UserBook
 
@@ -10,8 +11,7 @@ class UserAdmin(admin.ModelAdmin):
         'first_name',
         'last_name',
         'email',
-        'is_staff',
-        'is_active',
+        'image_profile_tag',
         'date_joined',
     )
     list_filter = (
@@ -24,6 +24,14 @@ class UserAdmin(admin.ModelAdmin):
         'modified',
     )
     raw_id_fields = ('groups', 'user_permissions')
+
+    def image_profile_tag(self, obj):
+        if not obj.image_profile:
+            return None
+
+        return mark_safe('<img src="{}" />'.format(obj.image_profile.thumbnail['100x100'].url))
+
+    image_profile_tag.short_description = 'Image'
 
 
 @admin.register(Book)
