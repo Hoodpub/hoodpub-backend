@@ -46,7 +46,8 @@ class User(AbstractUser, TimeStampedModel):
         'Image',
         upload_to='images/user/',
         blank=True,
-        null=True
+        null=True,
+        max_length=512
     )
     url_wiki = models.URLField(max_length=512, null=True, blank=True)
     objects = HoodpubUserManager()

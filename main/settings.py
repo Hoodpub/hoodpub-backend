@@ -148,6 +148,7 @@ USE_TZ = True
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_STORAGE_BUCKET_NAME = 'hoodpub-backend'
+AWS_QUERYSTRING_AUTH = False
 S3_USE_SIGV4 = True
 AWS_S3_HOST = 's3.ap-northeast-2.amazonaws.com'
 
