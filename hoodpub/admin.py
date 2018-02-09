@@ -3,6 +3,12 @@ from django.contrib import admin
 from .models import User, Book, UserBook
 
 
+class UserBookInline(admin.TabularInline):
+    model = UserBook
+
+    extra = 0
+
+
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     list_display = (
@@ -24,6 +30,7 @@ class UserAdmin(admin.ModelAdmin):
         'modified',
     )
     raw_id_fields = ('groups', 'user_permissions')
+    inlines = (UserBookInline, )
 
     def image_profile_tag(self, obj):
         if not obj.image_profile:

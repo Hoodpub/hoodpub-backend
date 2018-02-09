@@ -1,8 +1,9 @@
 import requests
+from django.db.models import Count
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
-from .models import Book, User, UserBook
+from .models import Book, User
 from .serializers import UserSerializer
 
 
@@ -10,11 +11,17 @@ class HoodpubViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+    def get_queryset(self):
+        queryset = super(HoodpubViewSet, self).get_queryset()
+        queryset = queryset.annotate(count=Count('userbooks')).order_by('-count')
+
+        return queryset
+
     def list(self, request, *args, **kwargs):
         return super(HoodpubViewSet, self).list(request, *args, **kwargs)
 
     def create(self, request, *args, **kwargs):
-        keyword = request.GET.get('keyword', '자전거')
+        keyword = request.data.get('keyword', '자전거')
 
         payload = {
             "output": "json",
@@ -34,11 +41,3 @@ class HoodpubViewSet(ModelViewSet):
                 barcode=ele['barcode'], defaults=ele)
             print(ele)
         return Response(res.json())
-
-    def delete(self, requests):
-        # exist = UserBookModel.exists()
-        # if exist:
-        #     UserBookModel.delete_table()
-        #     UserBookModel.create_table(read_capacity_units=1, write_capacity_units=1)
-
-        return Response(dict(res='exist'))

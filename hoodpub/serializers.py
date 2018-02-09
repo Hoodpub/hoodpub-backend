@@ -12,6 +12,7 @@ class BookSerializer(serializers.ModelSerializer):
 
 
 class UserBookSerializer(serializers.ModelSerializer):
+    book = BookSerializer()
 
     class Meta:
         model = UserBook
