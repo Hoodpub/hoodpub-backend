@@ -1,5 +1,7 @@
 import requests
 from django.db.models import Count
+from rest_framework import status
+from rest_framework.decorators import list_route
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
@@ -41,3 +43,9 @@ class HoodpubViewSet(ModelViewSet):
                 barcode=ele['barcode'], defaults=ele)
             print(ele)
         return Response(res.json())
+
+    @list_route(methods=['post'])
+    def add_user(self, request, *args, **kwargs):
+        keyword = request.data.get('keyword', '자전거')
+        user = User.objects.new_from_wiki(keyword)
+        return Response(dict(message=user), status=status.HTTP_201_CREATED)
