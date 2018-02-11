@@ -17,11 +17,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
 from book.views import BookViewSet
-from hoodpub.views import HoodpubViewSet
+from hoodpub.views import UserBookViewSet
 
 router = routers.SimpleRouter()
 router.register(r'book', BookViewSet, base_name='book')
-router.register(r'hoodpub', HoodpubViewSet, base_name='hoodpub')
+router.register(r'userbook', UserBookViewSet, base_name='hoodpub')
 urlpatterns = router.urls
 
 

@@ -9,18 +9,18 @@ from .models import Book, User
 from .serializers import UserSerializer
 
 
-class HoodpubViewSet(ModelViewSet):
+class UserBookViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
     def get_queryset(self):
-        queryset = super(HoodpubViewSet, self).get_queryset()
+        queryset = super(UserBookViewSet, self).get_queryset()
         queryset = queryset.annotate(count=Count('userbooks')).order_by('-count')
 
         return queryset
 
     def list(self, request, *args, **kwargs):
-        return super(HoodpubViewSet, self).list(request, *args, **kwargs)
+        return super(UserBookViewSet, self).list(request, *args, **kwargs)
 
     def create(self, request, *args, **kwargs):
         keyword = request.data.get('keyword', '자전거')
