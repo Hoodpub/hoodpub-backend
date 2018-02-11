@@ -1,0 +1,110 @@
+[
+  {
+    "model": "hoodpub.userbook",
+    "pk": 1,
+    "fields": {
+      "created": "2018-01-29T11:20:42.991Z",
+      "modified": "2018-01-29T11:27:24.492Z",
+      "book": 7,
+      "user": 1,
+      "url_refer": null,
+      "verified": false
+    }
+  },
+  {
+    "model": "hoodpub.userbook",
+    "pk": 2,
+    "fields": {
+      "created": "2018-01-29T11:27:32.654Z",
+      "modified": "2018-01-29T11:27:32.670Z",
+      "book": 9,
+      "user": 1,
+      "url_refer": null,
+      "verified": false
+    }
+  },
+  {
+    "model": "hoodpub.userbook",
+    "pk": 3,
+    "fields": {
+      "created": "2018-02-06T01:12:05.540Z",
+      "modified": "2018-02-06T01:12:05.555Z",
+      "book": 8,
+      "user": 44,
+      "url_refer": "http://localhost:9000/admin/hoodpub/user/44/change/",
+      "verified": true
+    }
+  },
+  {
+    "model": "hoodpub.userbook",
+    "pk": 4,
+    "fields": {
+      "created": "2018-02-06T01:18:23.657Z",
+      "modified": "2018-02-06T01:18:23.685Z",
+      "book": 13,
+      "user": 44,
+      "url_refer": null,
+      "verified": false
+    }
+  },
+  {
+    "model": "hoodpub.userbook",
+    "pk": 5,
+    "fields": {
+      "created": "2018-02-06T01:19:59.096Z",
+      "modified": "2018-02-06T01:19:59.372Z",
+      "book": 15,
+      "user": 44,
+      "url_refer": null,
+      "verified": false
+    }
+  },
+  {
+    "model": "hoodpub.userbook",
+    "pk": 6,
+    "fields": {
+      "created": "2018-02-06T01:20:16.720Z",
+      "modified": "2018-02-06T01:20:17.101Z",
+      "book": 32,
+      "user": 44,
+      "url_refer": null,
+      "verified": false
+    }
+  },
+  {
+    "model": "hoodpub.userbook",
+    "pk": 7,
+    "fields": {
+      "created": "2018-02-06T07:43:57.632Z",
+      "modified": "2018-02-06T07:43:57.665Z",
+      "book": 15,
+      "user": 32,
+      "url_refer": null,
+      "verified": false
+    }
+  },
+  {
+    "model": "hoodpub.userbook",
+    "pk": 8,
+    "fields": {
+      "created": "2018-02-06T07:44:07.752Z",
+      "modified": "2018-02-06T07:44:13.342Z",
+      "book": 9,
+      "user": 32,
+      "url_refer": null,
+      "verified": false
+    }
+  },
+  {
+    "model": "hoodpub.userbook",
+    "pk": 9,
+    "fields": {
+      "created": "2018-02-09T23:51:42.665Z",
+      "modified": "2018-02-09T23:51:42.684Z",
+      "book": 114,
+      "user": 27,
+      "url_refer": null,
+      "verified": false
+    }
+  }
+]

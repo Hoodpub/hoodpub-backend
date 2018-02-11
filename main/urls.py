@@ -21,7 +21,7 @@ from hoodpub.views import UserBookViewSet
 
 router = routers.SimpleRouter()
 router.register(r'book', BookViewSet, base_name='book')
-router.register(r'userbook', UserBookViewSet, base_name='hoodpub')
+router.register(r'userbook', UserBookViewSet, base_name='userbook')
 urlpatterns = router.urls
 
 

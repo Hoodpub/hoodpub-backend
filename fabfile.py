@@ -64,7 +64,7 @@ def deploy(force=False, env='stage'):
             local("zappa update live")
         _do_migrate()
 
-        local('curl https://backend-live.hoodpub.com/api/hoodpub/ | jq .')
+        local('curl https://backend-live.hoodpub.com/api/userbook/ | jq .')
 
     else:
         print("Failed in sanity checking.")

@@ -106,7 +106,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-print(DATABASES['default'])
 AUTH_USER_MODEL = 'hoodpub.User'
 
 # Password validation
