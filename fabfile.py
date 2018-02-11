@@ -16,6 +16,9 @@ def _do_migrate():
     with prefix(". $VIRTUAL_ENV/bin/activate"):
         local("zappa manage live  migrate")
 
+def _do_collectstatic():
+    with prefix(". $VIRTUAL_ENV/bin/activate"):
+        local("zappa manage live  collectstatic")
 
 # def flake8():
 #     local("flake8 --config=setup.cfg")
@@ -57,11 +60,11 @@ def deploy(force=False, env='stage'):
     conf['env'] = env
 
     if _sanity_check(force):
-        _do_migrate()
         with prefix(". $VIRTUAL_ENV/bin/activate"):
             local("zappa update live")
+        _do_migrate()
 
-        local('curl https://backend-live.hoodpub.com/api/book/ | jq .')
+        local('curl https://backend-live.hoodpub.com/api/hoodpub/ | jq .')
 
     else:
         print("Failed in sanity checking.")
