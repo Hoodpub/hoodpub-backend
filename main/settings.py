@@ -108,6 +108,11 @@ DATABASES = {
 }
 AUTH_USER_MODEL = 'hoodpub.User'
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 

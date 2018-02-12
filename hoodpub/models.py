@@ -1,5 +1,7 @@
 from urllib.request import urlopen
 
+from django.db.utils import IntegrityError
+
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
 from django.utils.safestring import mark_safe
@@ -13,17 +15,27 @@ wikipedia.set_lang("ko")
 
 class HoodpubUserManager(UserManager):
     def new_from_wiki(self, keyword):
-        page = wikipedia.page(keyword)
+        try:
+            page = wikipedia.page(keyword, auto_suggest=True)
+        except wikipedia.exceptions.PageError as e:
+            return None
+        except wikipedia.exceptions.DisambiguationError as e:
+            return None
+
         username = "%s-%s-%s" % (page.title, page.pageid, "wiki")
 
         images = [image for image in page.images if 'svg' not in image]
         image = images[0] if len(images) > 0 else None
 
-        user = self.create_user(
-            username,
-            password=page.title,
-            **dict(last_name=page.title,
-                   first_name=page.original_title))
+        try:
+            user = self.create_user(
+                username,
+                password=page.title,
+                **dict(last_name=page.title,
+                       first_name=page.original_title,
+                       url_wiki=page.url))
+        except IntegrityError:
+            user = self.get(url_wiki=page.url)
 
         if not image:
             print('no image')
