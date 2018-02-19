@@ -24,7 +24,8 @@ class HoodpubUserManager(UserManager):
 
         username = "%s-%s-%s" % (page.title, page.pageid, "wiki")
 
-        images = [image for image in page.images if 'svg' not in image]
+        images = list(set(
+            [image for image in page.images for ext in ['png', 'jpg'] if ext in image]))
         image = images[0] if len(images) > 0 else None
 
         try:
